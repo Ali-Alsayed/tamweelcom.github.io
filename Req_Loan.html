@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tamweelcom  | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+    <body class="req">
+        <header>
+        <nav>
+            <div class="container">
+            <div class="box">
+                <a href="Home.html" class="logo">TAMWEELCOM تمويلكم</a>
+                <ul>
+                <li>
+                    <a href="Home.html">Home</a>
+                </li>
+                <li>
+                    <a href="products.html">Products</a>
+                </li>
+                <li>
+                    <a href="Req_Loan.html" class="active">Request Loan</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li>
+                    <a href="aboutUs.html">About us</a>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+        </header>
+
+        <section>
+
+            <div class="container">
+                <form name="myForm" action="result.html" method="get" id="resultForm" >
+                    <h3><strong>Loan Application</strong></h3>
+                    <hr/>
+                    <div class="input-box">
+                        <label for="fname">First name: </label>
+                        <input type="text" id="fname" name="first_name">
+                    </div>
+            
+                    <div class="input-box">
+                        <label for="lname">Last name: </label>
+                        <input type="text" id="lname" name="last_name">
+                    </div>
+                    <div class="input-box">
+                        <label for="National-Number">National Number: </label>
+                        <input type="text" id="National-Number" name="national_number" >
+                    </div>
+                    <div class="input-box">
+                        <label for="dt">Date of Birth: </label>
+                        <input type="date" id="dt" onchange="mydate1();"/>
+                        <input type="text" style="display: none;" id="ndt" onclick="mydate();"/>
+                    </div>
+                    <div class="input-box">
+                        <label for="pNum">Phone Number: </label>
+                        <input type="text"onkeydown="phoneNumberFormatter()" maxlength="12" name="phone_number" id="pNum" placeholder="0911-111-111" >
+                    </div>
+                    <div class="input-box">
+                        <label for="email">Email: </label>
+                        <input type="text" id="email" name="user_email" placeholder="example@exmaple.com">
+                    </div>
+                    <div class="input-box">
+                        <label for="LoanValue">Loan Value: </label>
+                        <input type="text" id="LoanValue" name="loan_value" value="1000000">
+                    </div>
+                    <div class="input-box">
+                        <label for="LoanType">Loan Type: </label>
+                        <select name="Loan_Type" id="LoanType">
+                            <option value=""></option>
+                            <option value="Saving Account">Saving Account</option>
+                            <option value="Checking Account">Checking Account</option>
+                            <option value="Home">Home Loan</option>
+                            <option value="Workshop">Workshop Loan</option>
+                            <option value="Eductional">Eductional Loan</option>
+                            <option value="Agriculture">Agriculture Loan</option>
+                            <option value="Business">Business Loan</option>
+                            <option value="Transport">Transport Loan</option>
+                        </select>
+                    </div>
+                    <div class="input-box">
+                        <label for="loanYears">Years of Loan: </label>
+                        <select name="loan_Years" id="loanYears">
+                            <option value=""></option>
+                            <option value="3 Years">3</option>
+                            <option value="5 Years">5</option>
+                            <option value="10 Years">10</option>
+                            <option value="15 Years">15</option>
+                            <option value="20 Years">20</option>
+                        </select> 
+                    </div>
+                    <div class="input-box">
+                        <label for="payMeth">Payment Method: </label>
+                        <div id="payMeth" class="radio">
+                            <label for="Monthly">Monthly</label>
+                            <input type="radio" id="Monthly" value="Monthly" checked="checked" name="Payment_Method" >
+                            <label for="Quarterly">Quarterly</label>
+                            <input type="radio" id="Quarterly" value="Quarterly" name="Payment_Method" >
+                            <label for="Yearly">Yearly</label>
+                            <input type="radio" id="Yearly" value="Yearly" name="Payment_Method" >
+                        </div> 
+                    </div>
+                    <div class="input-box">
+                        <label for="captcha">Robots Not Allowed to take loans:</label>
+                        <div class="center cap-box">
+                            <div id="output"></div>
+                            <canvas id="captcha" name="captcha" width="200" height="50">captcha text</canvas>
+                            <input id="textBox" name="captcha" type="text" width="200" height="50" name="text">
+                            <button id="refreshButton" type="button">refresh</button>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <div>
+                            <input id="submitButton" type="submit" value="Submit" class="main-btn">
+                            <input id="resetButton" type="reset" value="Reset">  
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+        
+        <footer>
+            <div class="container">
+                <p>
+                    &copy; Copyright Homework 2022
+                </p>
+            </div>
+        </footer>
+
+        <script src="js/myFunctions.js"></script>
+    </body>
+</html>
+          
+          
+          

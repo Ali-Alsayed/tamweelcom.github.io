@@ -1,0 +1,369 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #fff;
+    --second-color: #003049;
+    --active-color: #318ee6;
+    --gray-color: #777;
+    --blue-color: steelblue
+}
+
+body {font-family: 'Montserrat', sans-serif; overflow-x: hidden;}
+
+.container {width: 1024px; margin: auto;}
+section {padding: 2rem 0;}
+
+h2 {
+    color: var(--second-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2em;
+}
+
+/*  Header */
+header.main {
+    height: 100vh;
+    background: url('../img/img.webp') no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 3;
+}
+
+header.main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    z-index: -1;
+}
+
+h1.main-text {
+    color: var(--main-color);
+    text-align: center;
+    transform: translateY(200px);
+}
+
+header nav {
+    padding: 2rem 0;
+    background-color: var(--main-color);
+    position: relative;
+    z-index: 99;
+}
+header nav ul, header .box {
+    display: flex;
+} 
+
+.box {justify-content: space-between;}
+
+header nav ul {
+    list-style: none;
+    column-gap: 1rem;
+}
+
+header nav ul li a, .logo {
+    color: var(--second-color);
+    text-decoration: none;
+    transition: color .3s ease-in-out;
+    font-weight: bold;
+}
+header nav ul li a.active, header nav ul li a:hover {color: var(--active-color); }
+
+/* Members */
+.members {background-color: #f5f5f5;}
+.members .parent {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.members .parent .card {
+    flex-basis: 20rem;
+    padding: 2rem;
+    border-radius: .4rem;
+    background-color: var(--blue-color);
+    box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--blue-color);
+    transition: all .3s ease-in-out;
+}
+.members .parent .card h3 {text-align: center; color: var(--main-color); transition: color .3s ease-in-out;}
+.members .parent .card h3 span {display: block; margin-bottom: 1rem;}
+.members .parent .card h3 span:first-child {font-family: 'Cairo', sans-serif;}
+
+.members .parent .card:hover {
+    transform: translateY(-10px);
+    box-shadow: none;
+    background-color: var(--main-color);
+}
+.members .parent .card:hover h3 {color: var(--blue-color);}
+
+/* Publish */
+.publish .box {
+    padding: 2rem;
+    border-left: 3px solid var(--blue-color);  
+    background: #f8f8f8;
+    box-shadow: 5px 10px 10px #ccc;
+}
+.publish .box a {color: var(--second-color); text-decoration: none; font-weight: bold; transition: color .3s ease-in-out;}
+.publish .box a:hover {color: var(--gray-color);}
+
+footer {
+    padding: 2rem 0;
+    background-color: var(--gray-color);
+    font-size: 14px;
+    color: var(--main-color);
+    text-align: center;
+}
+
+/* Products */
+.products .parent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.products h1 {margin-bottom: 2rem; text-align: center; color: var(--second-color);}
+
+.products .parent .card {
+    width: 14rem;
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+    margin: auto;
+    transition: all .3s ease-in-out;
+}
+.products .parent .card:hover {box-shadow: 0 10px 20px #ddd;}
+.products .parent .card .img-box {
+    height: 200px;
+    display: flex;
+    padding: 1rem;
+    overflow: hidden;
+}
+.products .parent .card .img-box img {width: 100%; height: auto;transition: all .3s ease-in-out;}
+.products .parent .card:hover img {box-shadow: 0 10px 20px #eee; transform: scale(1.1);}
+.products .parent .card .para {
+    padding: 1rem;
+    line-height: 1.9;
+}
+
+.products .card button:not(.close-modal), .main-btn {
+    padding: .8rem 1rem;
+    background: var(--blue-color);
+    color: var(--main-color);
+    border-radius: .3rem;
+    border: 1px solid var(--blue-color);
+    margin-top: .5rem;
+    cursor: pointer;
+    transform: all .3s ease-in-out;
+}
+.products .card button:not(.close-modal):hover, .main-btn:hover {
+    background-color: var(--main-color);
+    color: var(--blue-color);
+}
+
+.modal {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: top .3s ease-in-out;
+}
+.modal.open {top: 0;}
+
+.modal-content {
+    width: 50%;
+    background-color: var(--main-color);
+    border-radius: .4rem;
+    padding: 2rem;
+    opacity: 0;
+}
+.modal.open .modal-content {animation: show 1s ease-in-out; animation-delay: .5s; animation-fill-mode: forwards;}
+
+@keyframes show {
+    0% {transform: scale(0);}
+    50% {opacity: 1; transform: scale(1.1);}
+    100% {transform: scale(1); opacity: 1;}
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.close-modal {
+    background: none;
+    color: #000;
+    border: 0;
+    padding: 0;
+    font-size: 20px;
+    opacity: .5;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+}
+.close-modal:hover {opacity: 1;}
+
+.modal-text {
+    color: var(--gray-color);
+    line-height: 1.8;
+}
+
+
+/* Request */
+.req {
+    background-color: #dee7f5;
+}
+
+.req form {
+    width: 70%;
+    margin: auto;
+    padding: 2rem;
+    background-color: #f9f2e7;
+    border-radius: .4rem;
+}
+
+.req form > h3 {
+    text-align: center;
+    padding: 0 0 10px 10px;
+}
+
+.req form > hr {
+    border: groove;
+}
+
+.req form .input-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1rem;
+    padding: 1rem;
+    margin-bottom: .5rem;
+}
+.req form .input-box input, .req form select, input, textarea {
+    display: inline-block;
+    flex-grow: 1;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: .4rem;
+    outline: none;
+    transition: border-color .3s ease-in-out;
+}
+.req form .input-box input:focus, .req form select:focus, input:focus, textarea:focus {border-color: var(--blue-color);}
+.req form .input-box label {flex-basis: 150px;}
+.req form .input-box .radio label {margin-left: 1rem;}
+.req form .input-box .cap-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1rem;
+}
+.req form .input-box .cap-box canvas {
+    background: #fff;
+    border-radius: 0.4rem;
+}
+
+.req form .input-box .cap-box button {
+    padding: .6rem 1rem;
+}
+.incorrectCaptcha{
+    color: red;
+}
+
+/* Contact */
+
+.contact-section {
+    background: #fdfdfd url('../img/main-bg.jpg') repeat;
+    background-size: contain;
+    background-attachment: fixed;
+}
+.contact-section form {
+    width: 50%;
+    margin: 1rem auto;
+    padding: 2rem;
+    border-radius: .4rem;
+    box-shadow: 0 0 40px 3px #eee;
+    background-color: var(--main-color);
+}
+.contact-section form .input-box {margin-bottom: 1rem;}
+.contact-section form input, .contact-section form textarea {
+    width: 100%;
+}
+textarea {resize: none;}
+
+
+/* Result */
+.result-section {
+    background-color: #fdfdfd;
+    display: flex;
+    align-items: center;
+}
+/* thead {background-color: var(--blue-color); color: var(--main-color);} */
+table {margin-bottom: 2rem;}
+table caption {text-align: left; margin-bottom: .5rem; font-weight: bold;}
+table, td, th {
+    border: 1px solid var(--gray-color);
+    border-collapse: collapse;
+    border-width: 3px;
+    border-color:#003049;
+}
+table td, table th {
+    padding: 1rem;
+    font-size: 14px;
+    font-weight:bold;
+}
+table th {
+    color: var(--second-color) ;
+    background-color: #b9dbee;
+}
+
+/* About us */
+.about-us {
+    height: calc(100vh - 165px) ;
+    background-color:#eee;
+    text-align: center;
+}
+    
+.about-us h1 {font-size: 2em; color: var(--second-color); text-align: center; margin-bottom: 2rem;}
+.about-us p {color: var(--gray-color);}
+
+.about-us .team {display: flex; gap: 1rem;}
+.about-us .team .card {
+    background-color: var(--main-color);
+    width: 18rem;
+    border-radius: .4rem;
+    box-shadow: 0 0 20px #aaa;
+    transition: all .3s ease-in-out;
+}
+.about-us .team .card:hover {box-shadow: none;}
+.about-us .team .card .img-box {
+    height: 150px;
+    overflow: hidden;
+}
+.about-us .team .card .img-box img {width: 100%; height: auto; border-radius: .4rem .4rem 0 0;}
+.about-us .team .card h4 {margin: 1rem 0 .5rem;}
+.about-us .team .card span {
+    display: block;
+    color: var(--gray-color);
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 1rem;
+}
+
+
+
+
+
+
